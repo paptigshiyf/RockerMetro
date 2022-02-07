@@ -2,6 +2,7 @@
 <!-- 本人水平零蛋，能跑起来纯属意外，对一切状况概不负责 -->
 <!-- 主要使用高德API：https://lbs.amap.com/api/subway-api/subway-summary -->
 <!-- Open Repo in https://github.com/paptigshiyf/RockerMetro -->
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,shrink-to-fit=no"
@@ -70,11 +71,33 @@
                 "莲花路": "尽峰Acme",
                 "莘庄": "登拓",
                 "南京东路": "魔岩",
-                "龙阳路站": "岩立方，dyno park",
+                "龙阳路": "岩立方，dyno park",
                 "金科路": "vfour",
                 "虹口足球场": "小树SHU，啸Roaring",
                 "中潭路": "Neverest",
-                "延安西路": "Dome"
+                "延安西路": "Dome",
+                "西藏南路": "岩舞，Pongo",
+                "南浦大桥": "1778",
+                "龙华中路": "徐汇滨江",
+                "翔殷路": "共青森林公园",
+                "黄兴公园": "Ribbon叶岩",
+                "中华艺术宫": "岩舞",
+                "江月路": "红攀攀",
+                "商城路": "vfour",
+                "金桥路": "攀岩主义",
+                "龙溪路": "Pumpy胖噗",
+                "水城路": "DR",
+                "武宁路": "爬客",
+                "江宁路": "Beta",
+                "长风公园": "大岩悦动",
+                "华东理工大学": "Beta Plus",
+                "环城东路": "奉贤体育馆",
+                "嘉定新城": "尽峰Acme",
+                "醉白池": "5+Rock",
+                "松江体育中心": "登拓",
+                "松江新城": "山艺",
+                "金山卫": "金山户外综合运动馆",
+                "远东大道": "顽酷运动魔方",
             };
             window.markerStationList = markerStationList
             function OnStationClicked(ev, info) {
@@ -123,8 +146,8 @@
                         width: 0,
                         height: 0,
                         offset: {
-                            x: -13,
-                            y: -13
+                            x: 0,
+                            y: 0
                         },
                         cnt: `<div><img src="climbIcon.png" width="25px" height="25px" name=` + station + ` onclick="OnStationClickedByName(name)"></div>`
                     });
