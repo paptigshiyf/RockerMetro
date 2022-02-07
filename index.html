@@ -142,12 +142,16 @@
 
             mySubway.event.on("subway.complete", function () {
                 for (station in markerStationList) {
+                    if (mySubway.getIdByName(station) < 0)
+                    {
+                        console.log(station + " Name is Wrong!")
+                    }
                     mySubway.addMarker(station, {
-                        width: 0,
-                        height: 0,
+                        width: 25,
+                        height: 25,
                         offset: {
                             x: 0,
-                            y: 0
+                            y: 13
                         },
                         cnt: `<div><img src="climbIcon.png" width="25px" height="25px" name=` + station + ` onclick="OnStationClickedByName(name)"></div>`
                     });
