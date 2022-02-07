@@ -59,6 +59,15 @@
             background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAALCAYAAACUPhZAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAG5JREFUeNpiNDY2FmNgYJgDxFIM1AOvgDidCcpIAeJn1DQYiB8zIQlQwwK4wSAOE5oEJRagGIxuOCUWYBiMzXByLMBqMC7DSbEAp8H4DCfGArwGEzIcnwUEDSbGcGwWEGUwsYYjW3CBWINBACDAACkeLdxbVjieAAAAAElFTkSuQmCC) center top no-repeat;
             background-size: 21px 10px;
         }
+
+        .custom_circle {
+            /* background-image: url("climbIcon.png"); */
+            width: 30px;
+            height: 30px;
+            fill: saddlebrown !important;
+            fill-opacity: 0.6;
+            stroke-width: 0;
+        }
     </style>
     <script type="text/javascript">
 
@@ -141,20 +150,64 @@
             }
 
             mySubway.event.on("subway.complete", function () {
+
+                // var gymImg = document.createElement("embed");
+                // gymImg.setAttribute("id", "gymStation")
+                // gymImg.setAttribute("type", "image/png")
+                // gymImg.setAttribute("width", "26px")
+                // gymImg.setAttribute("height", "26px")
+                // gymImg.setAttribute("src", "climbIcon.png")
+
+                // parentNode = document.getElementsByTagName("defs").item(0)
+                // parentNode.appendChild(gymImg);
+
+                var detailOpts = {
+                    type: "circle",
+                    r: 16,
+                    customClass: "custom_circle"
+                };
+
                 for (station in markerStationList) {
-                    if (mySubway.getIdByName(station) < 0)
-                    {
+                    var sid = mySubway.getIdByName(station)
+                    if (sid < 0) {
                         console.log(station + " Name is Wrong!")
+                        continue
                     }
-                    mySubway.addMarker(station, {
-                        width: 25,
-                        height: 25,
-                        offset: {
-                            x: 0,
-                            y: 13
-                        },
-                        cnt: `<div><img src="climbIcon.png" width="25px" height="25px" name=` + station + ` onclick="OnStationClickedByName(name)"></div>`
-                    });
+                    mySubway.addCustomNode(sid, detailOpts);
+                    // mySubway.addMarker(station, {
+                    //     width: 25,
+                    //     height: 25,
+                    //     offset: {
+                    //         x: 0,
+                    //         y: 13
+                    //     },
+                    //     cnt: `<div><img src="climbIcon.png" width="25px" height="25px" name=` + station + ` onclick="OnStationClickedByName(name)" touchend="OnStationClickedByName(name)"></div>`
+
+                    // });
+                    // obj = document.getElementById(sid)
+
+                    // newchild = document.createElement("image");
+                    // // newchild.setAttribute("id", obj.getAttribute("id"))
+                    // // newchild.setAttribute("class", obj.getAttribute("class"))
+                    // // newchild.setAttribute("line_id", obj.getAttribute("line_id"))
+                    // newchild.setAttribute("x", obj.getAttribute("x"))
+                    // newchild.setAttribute("y", obj.getAttribute("y"))
+                    // newchild.setAttribute("href", "climbIcon.png")
+                    // // newchild.setAttribute("id", "image")
+                    // newchild.setAttribute("width", "50")
+                    // newchild.setAttribute("weight", "50")
+
+                    // newchild = document.createElement("circle");
+                    // newchild.setAttribute("cx", obj.getAttribute("x"))
+                    // newchild.setAttribute("cy", obj.getAttribute("y"))
+                    // newchild.setAttribute("class", "station_obj subway-entity custom_circle")
+                    // newchild.setAttribute("fill", "rgba(0, 255, 0, 0.7) !important")
+
+                    // parentNode = obj.parentNode
+                    // parentNode.insertBefore(newchild, obj)
+
+                    // obj.setAttribute("href", "#gymStation");
+                    // obj.removeAttribute("xlink:href")
                 }
             })
 
